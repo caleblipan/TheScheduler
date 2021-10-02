@@ -1,1 +1,2 @@
-Just run <code>gradlew build</code> and you should be good to go :)
+<h1>The Scheduler</h1>
+A scheduling app for college students that saves their daily tasks and schedules to the cloud.
