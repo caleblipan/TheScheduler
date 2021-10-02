@@ -1,13 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.example.karl.myapplication">
+	<uses-permission android:name="android.permission.INTERNET"/>
 	<application
-		android:label="04a. ImageView"
-		android:theme="@style/AppTheme">
+		android:label="ONEHealth"
+		android:theme="@style/AppTheme"
+		android:icon="@drawable/list">
 		<activity android:name=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+		</activity>
+		<activity android:name=".RegisterForm">
 		</activity>
 	</application>				
 </manifest>

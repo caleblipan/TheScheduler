@@ -4,72 +4,42 @@
 	    xmlns:tools="http://schemas.android.com/tools"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:layout_marginEnd="32dp"
-	    android:paddingLeft="32dp"
-	    android:paddingTop="32dp"
-	    android:paddingRight="32dp"
-	    android:paddingBottom="32dp">
-	<ImageView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:id="@+id/imageView"
-        	app:layout_constraintLeft_toLeftOf="parent"
-        	app:layout_constraintTop_toTopOf="parent"
-		android:src="@drawable/idn_green_logo_100x100px"
-	/>
+	    android:paddingLeft="30dp"
+	    android:paddingTop="30dp"
+	    android:paddingRight="30dp"
+	    android:paddingBottom="30dp">
 	<TextView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:layout_marginLeft="16dp"
-		android:text="IDN Green (Caleb)" 
-		android:textSize="22sp"
-		android:textStyle="bold"
-		android:id="@+id/IDNGreen"
-        	app:layout_constraintTop_toTopOf="parent"
-        	app:layout_constraintLeft_toRightOf="@id/imageView"
-	/>
-	<TextView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:layout_marginLeft="16dp"
-		android:text="an IDN Eco-friendly technology"
-		android:textSize="12sp"
-        	app:layout_constraintLeft_toRightOf="@id/imageView"
-        	app:layout_constraintTop_toBottomOf="@id/IDNGreen"
-	/>
-	<TextView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
-		android:layout_marginBottom="8dp"
-		android:text="Terms of Service" 
-		android:textSize="20sp"
-		android:textStyle="bold" 
-		android:id="@+id/Title"
-        	app:layout_constraintStart_toStartOf="parent"
-        	app:layout_constraintTop_toBottomOf="@id/imageView"
-	/>
-	<TextView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:id="@+id/Terms"
-        	app:layout_constraintStart_toStartOf="parent"
-        	app:layout_constraintTop_toBottomOf="@id/Title"
-		android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac ex ut magna imperdiet interdum ac vel nunc. Donec augue elit, vulputate sit amet nulla sed, feugiat imperdiet velit. Integer placerat laoreet lacus, eget posuere nulla congue eu. Aliquam a sem ac ligula convallis volutpat in quis justo. Nam fermentum rhoncus lorem, ac euismod mi luctus non. Nam eget urna ultrices, accumsan ex in, tincidunt quam. Cras malesuada lorem id scelerisque tincidunt. Pellentesque orci enim, finibus eget urna quis, consequat viverra diam. Vestibulum volutpat vulputate imperdiet. Morbi ac urna ac diam semper rhoncus vel sed justo. Maecenas ullamcorper, dolor quis pretium iaculis, libero justo ultricies eros, eget mollis massa magna id lacus. Sed ac lectus hendrerit, viverra dolor non, tincidunt tellus."
-	/>
-	<CheckBox
 		android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
 		android:layout_marginTop="8dp"
+		android:layout_marginBottom="8dp"
+		android:text="Welcome to ONEHealth" 
+		android:textSize="19sp"
+		android:textColor="#3abeff"
+		android:id="@+id/Title"
         	app:layout_constraintStart_toStartOf="parent"
-        	app:layout_constraintTop_toBottomOf="@id/Terms"
-		android:text="Yes, I accept."
+        	app:layout_constraintTop_toTopOf="parent"
+	/>
+	<TextView
+		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="8dp"
+		android:text="Start by registering yourself." 
+		android:textSize="14sp"
+		android:textColor="#051319"
+		android:id="@+id/Caption"
+        	app:layout_constraintStart_toStartOf="parent"
+        	app:layout_constraintTop_toBottomOf="@id/Title"
 	/>
 	<Button
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Next"
+		android:id="@+id/RegisterButton"
+		android:background="@drawable/button_rounded"
+		android:text="Register Now"
+		android:textColor="#ffffff"
+        	app:layout_constraintStart_toStartOf="parent"
         	app:layout_constraintBottom_toBottomOf="parent"
-        	app:layout_constraintRight_toRightOf="parent"
 	/>
 </android.support.constraint.ConstraintLayout>
