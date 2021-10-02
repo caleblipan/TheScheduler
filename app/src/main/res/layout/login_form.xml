@@ -9,14 +9,6 @@
 	    android:paddingTop="32dp"
 	    android:paddingRight="32dp"
 	    android:paddingBottom="32dp">
-	<ImageView
-		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:id="@+id/imageView"
-        	app:layout_constraintLeft_toLeftOf="parent"
-        	app:layout_constraintTop_toTopOf="parent"
-		android:src="@drawable/idn_green_logo_100x100px"
-	/>
 	<TextView
 		android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
@@ -26,7 +18,7 @@
 		android:textStyle="bold"
 		android:id="@+id/textView"
         	app:layout_constraintStart_toStartOf="parent"
-        	app:layout_constraintTop_toBottomOf="@id/imageView"
+        	app:layout_constraintTop_toBottomOf="parent"
 	/>
 	<TextView
 		android:layout_width="wrap_content"

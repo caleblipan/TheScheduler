@@ -1,4 +1,4 @@
-package com.example.karl.myapplication;
+package com.example.scheduler.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,18 +9,18 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.view.View;
 
-public class SignIn extends Activity {
+public class LoginForm extends Activity {
 	Button button;
 	TextView textView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sign_in);
-		moveToSignUpNew();
+		setContentView(R.layout.login_form);
+		moveToRegisterForm();
 	}
 
-	public void moveToSignUpNew() {
+	public void moveToRegisterForm() {
 		final Context context = this;
 		textView = (TextView) findViewById(R.id.NoAccount);
 

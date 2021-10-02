@@ -1,4 +1,4 @@
-package com.example.karl.myapplication;
+package com.example.scheduler.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,30 +28,19 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		       
-		getSupportActionBar().setTitle("ONEHealth");
-		addListenerOnButton();
-		// moveToSignUp();
+		getSupportActionBar().setTitle("The Scheduler");
 
-		// Next Button Sign In
-		/*
-		Button nextButtonSignIn = (Button)findViewById(R.id.nextButtonSignIn);
-    		nextButtonSignIn.setEnabled(false);
-		*/
-		// Next Button Sign Up
-		/*
-		Button nextButtonSignUp = (Button)findViewById(R.id.nextButtonSignUp);
-    		nextButtonSignUp.setEnabled(false);
-		*/
+		moveToLoginForm();
 	}
 
-	public void addListenerOnButton() {
+	public void moveToLoginForm() {
 		final Context context = this;
-		button = (Button) findViewById(R.id.RegisterButton);
+		button = (Button) findViewById(R.id.LoginButton);
 
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-			    Intent intent = new Intent(context, RegisterForm.class);
+			    Intent intent = new Intent(context, LoginForm.class);
                             startActivity(intent);
 			}
 		});

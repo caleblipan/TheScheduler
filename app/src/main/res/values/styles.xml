@@ -5,4 +5,10 @@
     		<item name="colorControlActivated">#3abeff</item>
     		<item name="colorControlHighlight">#3abeff</item>
 	</style>
+	<!-- ActionBar -->
+	<style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        	<item name="android:background">@drawable/action_bar_bg</item>
+        	<!-- Support library compatibility -->
+        	<item name="background">@drawable/action_bar_bg</item>
+	</style>
 </resources>
