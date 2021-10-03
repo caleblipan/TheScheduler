@@ -1,9 +1,9 @@
 <resources>
 	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-		<item name="colorPrimary">#3abeff</item>
-    		<item name="colorControlNormal">#dedede</item>
-    		<item name="colorControlActivated">#3abeff</item>
-    		<item name="colorControlHighlight">#3abeff</item>
+		<item name="colorPrimary">#ffffff</item>
+    		<item name="colorControlNormal">#ffffff</item>
+    		<item name="colorControlActivated">#ffffff</item>
+    		<item name="colorControlHighlight">#ffffff</item>
 	</style>
 	<!-- ActionBar -->
 	<style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
