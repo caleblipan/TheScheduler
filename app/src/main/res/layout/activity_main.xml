@@ -13,25 +13,66 @@
         	android:layout_height="wrap_content"
 		android:layout_marginTop="8dp"
 		android:layout_marginBottom="8dp"
-		android:text="Welcome to ONEHealth" 
+		android:text="What's on the next few days?"
 		android:textSize="19sp"
 		android:textColor="#3abeff"
 		android:id="@+id/Title"
         	app:layout_constraintStart_toStartOf="parent"
         	app:layout_constraintTop_toTopOf="parent"
 	/>
+
 	<TextView
+		android:id="@+id/title2"
 		android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:layout_marginBottom="8dp"
-		android:text="Start by registering yourself." 
-		android:textSize="14sp"
-		android:textColor="#051319"
-		android:id="@+id/Caption"
-        	app:layout_constraintStart_toStartOf="parent"
-        	app:layout_constraintTop_toBottomOf="@id/Title"
-	/>
+		android:layout_height="wrap_content"
+		android:layout_marginStart="4dp"
+		android:layout_marginLeft="4dp"
+		android:layout_marginTop="64dp"
+		android:text="Sunday, 5 December"
+		android:textColor="#1d1d1d"
+		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/title3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="4dp"
+		android:layout_marginLeft="4dp"
+		android:layout_marginTop="196dp"
+		android:text="Monday, 6 December"
+		android:textColor="#1d1d1d"
+		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/title4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="4dp"
+		android:layout_marginLeft="4dp"
+		android:layout_marginTop="324dp"
+		android:text="Tuesday, 7 December"
+		android:textColor="#1d1d1d"
+		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/title5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginTop="480dp"
+		android:text="Wednesday, 8 December"
+		android:textColor="#1d1d1d"
+		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
