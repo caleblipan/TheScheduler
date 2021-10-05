@@ -1,53 +1,29 @@
 package com.example.scheduler.myapplication;
 
-import android.content.Context;
-import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.os.Handler;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-	Button button;
-	private BottomNavigationView bottomNavigationView;
+
+	private int loading_time = 2000;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.splash_screen);
+		getSupportActionBar().hide();
 
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setTitle("The Scheduler");
-		actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
-
-		moveToLoginForm();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.main_activity_menu, menu);
-		return true;
-	}
-
-	public void moveToLoginForm() {
-		final Context context = this;
-		button = (Button) findViewById(R.id.LoginButton);
-
-		button.setOnClickListener(new OnClickListener() {
+		new Handler().postDelayed(new Runnable() {
 			@Override
-			public void onClick(View arg0) {
-			    Intent intent = new Intent(context, LoginForm.class);
-			    startActivity(intent);
+			public void run() {
+				Intent home=new Intent(MainActivity.this, ActivityHome.class);
+				startActivity(home);
+				finish();
 			}
-		});
+		},loading_time);
+
 	}
 }

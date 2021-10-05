@@ -1,26 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.example.scheduler.myapplication">
-	<application
-		android:label="The Scheduler"
-		android:theme="@style/AppTheme">
+    package="com.example.scheduler.myapplication">
 
-		<!-- Home Page -->
-		<activity android:name=".MainActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+    <application
+        android:label="The Scheduler"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ActivityHome"
+            android:exported="true" />
+        <!-- Home Page -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-		<!-- Login Form -->
-		<activity android:name=".LoginForm">
-		</activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Login Form -->
+        <activity android:name=".LoginForm"></activity> <!-- Register Form -->
+        <activity android:name=".RegisterForm"></activity>
 
-		<!-- Register Form -->
-		<activity android:name=".RegisterForm">
-		</activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

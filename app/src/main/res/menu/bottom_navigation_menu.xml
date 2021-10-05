@@ -17,7 +17,7 @@
         android:icon="@drawable/calendar_button"
         app:showAsAction="always"></item>
     <item
-        android:id="@+id/Login"
+        android:id="@+id/login_button_bottom_nav"
         android:title="Login"
         android:icon="@drawable/login_button"></item>
 </menu>
