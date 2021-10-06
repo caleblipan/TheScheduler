@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/Home"
+        android:id="@+id/home_button"
         android:title="Home"
-        android:icon="@drawable/home_button"
-        app:showAsAction="always"></item>
+        android:icon="@drawable/home" />
     <item
-        android:id="@+id/List"
-        android:title="List"
-        android:icon="@drawable/list_button"
-        app:showAsAction="always"></item>
+        android:id="@+id/list_button"
+        android:title="To-do List"
+        android:icon="@drawable/list" />
     <item
-        android:id="@+id/Calendar"
-        android:title="Calendar"
-        android:icon="@drawable/calendar_button"
-        app:showAsAction="always"></item>
+        android:id="@+id/schedule_button"
+        android:title="Your Schedule"
+        android:icon="@drawable/calendar" />
     <item
-        android:id="@+id/login_button_bottom_nav"
+        android:id="@+id/login_button"
         android:title="Login"
-        android:icon="@drawable/login_button"></item>
+        android:icon="@drawable/login" />
 </menu>
