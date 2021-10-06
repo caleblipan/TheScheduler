@@ -40,7 +40,7 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
     }
 
     Home home = new Home();
-    List list = new List();
+    TodoList todoList = new TodoList();
     Schedule schedule = new Schedule();
     Login login = new Login();
 
@@ -51,7 +51,7 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home).commit();
                 return true;
             case R.id.list_button:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, list).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, todoList).commit();
                 return true;
             case R.id.schedule_button:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, schedule).commit();
