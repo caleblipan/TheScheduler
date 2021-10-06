@@ -15,13 +15,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Login Form -->
-        <activity android:name=".LoginForm"></activity> <!-- Register Form -->
-        <activity android:name=".RegisterForm"></activity>
+        </activity>
+        <!-- Login Form -->
+        <activity android:name=".LoginForm"></activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <!-- Register Form -->
+        <activity android:name=".RegisterForm"></activity>
     </application>
 
 </manifest>
