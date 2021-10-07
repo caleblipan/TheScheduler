@@ -1,14 +1,513 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Schedule">
+    android:orientation="vertical" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/dayRow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp" >
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/dayRowHorizontalSpacer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/sundayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2"
+            android:layout_marginTop="0dp"  >
+
+            <TextView
+                android:id="@+id/sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="6dp"
+                android:text="Sun"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mondayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:gravity="center"
+                android:text="Mon"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tuesdayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:text="Tue"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/wednesdayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:text="Wed"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/thursdayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:text="Thu"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fridayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:text="Fri"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/saturdayLayout"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="2" >
+
+            <TextView
+                android:id="@+id/saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="6dp"
+                android:text="Sat"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dayRowVerticalSpacer"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/dayRow" />
+
+    <ScrollView
+        android:id="@+id/calendarScroll"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/dayRowSpacer"
+        android:layout_alignParentBottom="true"
+        android:overScrollMode="never"
+        android:padding="0dp"
+        android:scrollbars="none"
+        android:fadingEdge="none" >
+
+        <RelativeLayout
+            android:id="@+id/calendarRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp" >
+
+            <LinearLayout
+                android:id="@+id/scheduleColumns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:padding="0dp" >
+
+                <RelativeLayout
+                    android:id="@+id/hoursColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="0dp" >
+
+                    <TextView
+                        android:id="@+id/time12am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="12 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time1am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center"
+                        android:text="1 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time2am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="120dp"
+                        android:gravity="center"
+                        android:text="2 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time3am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="180dp"
+                        android:gravity="center"
+                        android:text="3 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time4am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="240dp"
+                        android:gravity="center"
+                        android:text="4 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time5am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="300dp"
+                        android:gravity="center"
+                        android:text="5 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time6am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="360dp"
+                        android:gravity="center"
+                        android:text="6 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time7am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="420dp"
+                        android:gravity="center"
+                        android:text="7 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time8am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="480dp"
+                        android:gravity="center"
+                        android:text="8 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time9am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="540dp"
+                        android:gravity="center"
+                        android:text="9 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time10am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="600dp"
+                        android:gravity="center"
+                        android:text="10 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time11am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="660dp"
+                        android:gravity="center"
+                        android:text="11 AM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time12pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="720dp"
+                        android:gravity="center"
+                        android:text="12 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time1pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="780dp"
+                        android:gravity="center"
+                        android:text="1 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time2pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="840dp"
+                        android:gravity="center"
+                        android:text="2 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time3pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="900dp"
+                        android:gravity="center"
+                        android:text="3 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time4pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="960dp"
+                        android:gravity="center"
+                        android:text="4 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time5pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1020dp"
+                        android:gravity="center"
+                        android:text="5 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time6pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1080dp"
+                        android:gravity="center"
+                        android:text="6 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time7pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1140dp"
+                        android:gravity="center"
+                        android:text="7 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time8pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1200dp"
+                        android:gravity="center"
+                        android:text="8 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time9pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1260dp"
+                        android:gravity="center"
+                        android:text="9 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time10pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1320dp"
+                        android:gravity="center"
+                        android:text="10 PM"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/time11pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginTop="1380dp"
+                        android:gravity="center|top"
+                        android:text="11 PM"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sundayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mondayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tuesdayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/wednesdayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/thursdayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fridayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/saturdayColumn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" >
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>
