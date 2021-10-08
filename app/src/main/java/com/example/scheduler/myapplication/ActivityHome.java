@@ -16,11 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class ActivityHome extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private int loading_time = 5000;
     Button button;
-
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -34,8 +34,8 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
 
         // Bottom navigation menu
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        // Default selected bottom navigation menu
         bottomNavigationView.setSelectedItemId(R.id.home_button);
     }
 
