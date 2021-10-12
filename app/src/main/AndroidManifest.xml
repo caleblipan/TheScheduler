@@ -5,7 +5,7 @@
     <application
         android:label="The Scheduler"
         android:theme="@style/AppTheme"
-        android:icon="@drawable/logo">
+        android:icon="@drawable/logo_green_launcher">
         <activity
             android:name=".ActivityHome"
             android:exported="true" />

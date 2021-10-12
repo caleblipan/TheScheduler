@@ -20,12 +20,15 @@
 		android:id="@+id/bottomNavigationView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@drawable/action_bar_bg"
+		android:background="@drawable/bottom_navigation_bar_bg"
 		android:textSize="20sp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.566"
 		app:layout_constraintStart_toStartOf="parent"
 		app:menu="@menu/bottom_navigation_menu"
+		app:labelVisibilityMode="labeled"
+		app:itemTextColor="@color/bottom_nav_color"
+		app:itemIconTint="@color/bottom_nav_color"
 		/>
 </androidx.constraintlayout.widget.ConstraintLayout>
