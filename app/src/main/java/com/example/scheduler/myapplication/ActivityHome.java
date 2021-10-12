@@ -29,8 +29,12 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("The Scheduler");
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.logo_green_action_bar);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // Bottom navigation menu
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
