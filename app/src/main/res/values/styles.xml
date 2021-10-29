@@ -11,4 +11,10 @@
         	<!-- Support library compatibility -->
         	<item name="background">@drawable/action_bar_bg</item>
 	</style>
+	<style name="TimePicker" parent="Theme.AppCompat.Light.Dialog">
+		<item name="android:windowIsFloating">true</item>
+		<item name="colorPrimary">#7ed957</item>
+		<item name="colorPrimaryDark">#7ed957</item>
+		<item name="colorAccent">#7ed957</item>
+	</style>
 </resources>

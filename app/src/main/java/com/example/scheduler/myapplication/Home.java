@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;import android.text.format.DateFormat;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,6 +54,76 @@ public class Home extends Fragment {
         String date5 = "" + now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) + ", " + now.get(Calendar.DATE) + " " + now.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         TextView fifthDate = rootView.findViewById(R.id.date_5);
         fifthDate.setText(date5);
+
+        Bundle arguments1 = new Bundle();
+        arguments1.putString("date", date1);
+        TextView addTask1 = rootView.findViewById(R.id.add_task_1);
+        addTask1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoList todoList= new TodoList();
+                todoList.setArguments(arguments1);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, todoList)
+                        .commit();
+            }
+        });
+
+        Bundle arguments2 = new Bundle();
+        arguments2.putString("date", date2);
+        TextView addTask2 = rootView.findViewById(R.id.add_task_2);
+        addTask2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoList todoList= new TodoList();
+                todoList.setArguments(arguments2);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, todoList)
+                        .commit();
+            }
+        });
+
+        Bundle arguments3 = new Bundle();
+        arguments3.putString("date", date3);
+        TextView addTask3 = rootView.findViewById(R.id.add_task_3);
+        addTask3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoList todoList= new TodoList();
+                todoList.setArguments(arguments3);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, todoList)
+                        .commit();
+            }
+        });
+
+        Bundle arguments4 = new Bundle();
+        arguments4.putString("date", date4);
+        TextView addTask4 = rootView.findViewById(R.id.add_task_4);
+        addTask4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoList todoList= new TodoList();
+                todoList.setArguments(arguments4);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, todoList)
+                        .commit();
+            }
+        });
+
+        Bundle arguments5 = new Bundle();
+        arguments5.putString("date", date5);
+        TextView addTask5 = rootView.findViewById(R.id.add_task_5);
+        addTask5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TodoList todoList= new TodoList();
+                todoList.setArguments(arguments5);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, todoList)
+                        .commit();
+            }
+        });
 
         return rootView;
     }
