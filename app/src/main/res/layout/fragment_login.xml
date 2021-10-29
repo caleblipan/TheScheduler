@@ -61,7 +61,7 @@
         android:hint="081212345678"
         android:textColorHint="#666666"
         android:background="@drawable/button_rounded"
-        android:id="@+id/nextButtonSignIn"
+        android:id="@+id/login_button"
         android:text="Login"
         android:textColor="#ffffff"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,6 +78,6 @@
         android:id="@+id/noAccount"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nextButtonSignIn"
+        app:layout_constraintTop_toBottomOf="@id/login_button"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
