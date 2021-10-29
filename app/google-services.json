@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "837570509698",
+    "project_id": "thescheduler-dfb0a",
+    "storage_bucket": "thescheduler-dfb0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837570509698:android:9abbad14bdfea2dd2ded9b",
+        "android_client_info": {
+          "package_name": "com.example.scheduler.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837570509698-m1iapevp119tb5akte2jjjco1b714mtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO872KBKNTlUQBuDrEAConx-55rADr0vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837570509698-m1iapevp119tb5akte2jjjco1b714mtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
