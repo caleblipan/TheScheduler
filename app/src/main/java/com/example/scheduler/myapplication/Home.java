@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;import android.text.format.DateFormat;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
@@ -18,6 +21,7 @@ import java.util.Locale;
 
 public class Home extends Fragment {
     private View rootView;
+    private FirebaseAuth firebaseAuth;
 
     public Home() {
         // Required empty public constructor
@@ -26,6 +30,14 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            getActivity().getWindow().findViewById(R.id.login_button).setVisibility(View.GONE);
+            getActivity().getWindow().findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+        }
+
         Calendar now = Calendar.getInstance();
 
         // Inflate the layout for this fragment
