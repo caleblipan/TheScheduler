@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +24,7 @@ import android.widget.TextView;
 
 public class ActivityHome extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private int loading_time = 5000;
+    private FirebaseAuth firebaseAuth;
     Button button;
     BottomNavigationView bottomNavigationView;
 
@@ -39,6 +43,14 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
 
         // Bottom navigation menu
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            findViewById(R.id.login_button).setVisibility(View.GONE);
+            findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+        }
+
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         // Default selected bottom navigation menu
         bottomNavigationView.setSelectedItemId(R.id.home_button);

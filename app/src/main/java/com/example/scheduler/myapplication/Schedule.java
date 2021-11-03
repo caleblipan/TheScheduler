@@ -26,6 +26,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +38,7 @@ public class Schedule extends Fragment implements CalendarAdapter.OnItemListener
     private View rootView;
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    private FirebaseAuth mAuth;
 
     public Schedule() {
         // Required empty public constructor
@@ -44,6 +48,13 @@ public class Schedule extends Fragment implements CalendarAdapter.OnItemListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            getActivity().getWindow().findViewById(R.id.login_button).setVisibility(View.GONE);
+            getActivity().getWindow().findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+        }
 
         initWidgets(rootView);
         CalendarUtils.selectedDate = LocalDate.now();

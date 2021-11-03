@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends Fragment {
     private View rootView;
     private FirebaseAuth mAuth;
+    private BottomNavigationView bottomNavigationView;
     EditText editTextEmail, editTextPassword;
     String email, password;
     public Login() {
@@ -67,6 +69,15 @@ public class Login extends Fragment {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+
+                                    // Bottom navigation menu
+                                    bottomNavigationView = rootView.findViewById(R.id.bottomNavigationView);
+                                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                                    if (currentUser != null) {
+                                        getActivity().getWindow().findViewById(R.id.login_button).setVisibility(View.GONE);
+                                        getActivity().getWindow().findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+                                    }
+
                                     Home home= new Home();
                                     getFragmentManager().beginTransaction()
                                             .replace(R.id.fragment_container, home)
