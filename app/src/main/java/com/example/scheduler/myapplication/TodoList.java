@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,10 +40,19 @@ public class TodoList extends Fragment {
     private FirebaseAuth mAuth;
     BottomNavigationView bottomNavigationView;
     EditText editTextTitle, editTextTaskDateInput, editTextTaskTimeInput;
-    String spinnerValue, title, date, time;
+    String spinnerValue, todolistTitle, todolistDate, todolistTime;
+    public String title, date, taskType, time;
 
     public TodoList() {
         // Required empty public constructor
+    }
+
+    /* GET ALL TODOLIST DATA */
+    public TodoList(String Date, String TaskType, String Time, String Title) {
+        title = Date;
+        date = TaskType;
+        time = Time;
+        title = Title;
     }
 
     @Override
@@ -102,26 +112,33 @@ public class TodoList extends Fragment {
                 editTextTaskDateInput = (EditText) rootView.findViewById(R.id.task_date_input);
                 editTextTaskTimeInput = (EditText) rootView.findViewById(R.id.task_time_input);
 
-                title = editTextTitle.getText().toString().trim();
-                date = editTextTaskDateInput.getText().toString().trim();
-                time = editTextTaskTimeInput.getText().toString().trim();
+                todolistTitle = editTextTitle.getText().toString().trim();
+                todolistDate = editTextTaskDateInput.getText().toString().trim();
+                todolistTime = editTextTaskTimeInput.getText().toString().trim();
 
                 // Get current user email
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 if (user != null) {
-                    userEmail = user.getEmail();
+                    userEmail = user.getEmail().replace(".", ",");
                 }
-                String key = ref.child("todolist").push().getKey();
+                // Push to todolist
+                String key = ref.child("todolist").push().getKey(); // Use this key to users (down below)
                 Map<String, Object> mHashmap = new HashMap<>();
 
-                mHashmap.put("todolist/" + key + "/title", title);
-                mHashmap.put("todolist/" + key + "/taskType", spinnerValue);
-                mHashmap.put("todolist/" + key + "/date", date);
-                mHashmap.put("todolist/" + key + "/time", time);
-                mHashmap.put("todolist/" + key + "/postedBy", userEmail);
+                mHashmap.put("todolist/" + userEmail + "/" + key + "/Date", todolistDate);
+                mHashmap.put("todolist/" + userEmail + "/" + key + "/TaskType", spinnerValue);
+                mHashmap.put("todolist/" + userEmail + "/" + key + "/Time", todolistTime);
+                mHashmap.put("todolist/" + userEmail + "/" + key + "/Title", todolistTitle);
 
                 ref.updateChildren(mHashmap);
+
+                // Push to users
+                Map<String, Object> userHashmap = new HashMap<>();
+
+                userHashmap.put("credentials/" + userEmail + "/todolists/" + todolistDate + "/" + key + "/time", todolistTime);
+
+                ref.updateChildren(userHashmap);
 
                 // Redirect to Home page
                 Home home= new Home();
@@ -156,5 +173,26 @@ public class TodoList extends Fragment {
 
             }
         });
+    }
+
+    // Getters
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String Title) {
+        title = Title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public String getTime() {
+        return time;
     }
 }

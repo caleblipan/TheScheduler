@@ -93,8 +93,8 @@ public class Register extends Fragment {
                                     // Store values in Realtime Database
                                     HashMap<String, Object> mHashmap = new HashMap<>();
 
-                                    mHashmap.put("credentials/" + username + "/email", email);
-                                    mHashmap.put("credentials/" + username + "/password", password);
+                                    mHashmap.put("credentials/" + email.replace(".", ",") + "/email", email);
+                                    mHashmap.put("credentials/" + email.replace(".", ",") + "/password", password);
 
                                     ref.updateChildren(mHashmap);
 
