@@ -1,9 +1,19 @@
 package com.example.scheduler.myapplication;
 
+import static android.content.ContentValues.TAG;
+
+import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.renderscript.Sampler;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;import android.text.format.DateFormat;
@@ -11,17 +21,28 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Home extends Fragment {
     private View rootView;
     private FirebaseAuth firebaseAuth;
+    private String userEmail;
+    List<String> titles = new ArrayList<String>();
 
     public Home() {
         // Required empty public constructor
@@ -30,18 +51,30 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        /* RENDER THE NEXT FIVE DAYS OF TODOLIST */
+        renderNextFiveDays(rootView);
+
+        /* GET DATA REGARDING THE STATE OF THE AUTHENTICATION */
+        // Initialize Firebase
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        // Set visibility based on the state of the app
         if (currentUser != null) {
             getActivity().getWindow().findViewById(R.id.login_button).setVisibility(View.GONE);
             getActivity().getWindow().findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+
+            /* RENDER ALL AVAILABLE TODOLIST DATA */
+            renderAllAvailableTodolistData(currentUser, rootView);
         }
 
-        Calendar now = Calendar.getInstance();
+        return rootView;
+    }
 
-        // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+    public void renderNextFiveDays(View rootView) {
+        Calendar now = Calendar.getInstance();
 
         String date1 = "" + now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) + ", " + now.get(Calendar.DATE) + " " + now.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
         TextView firstDate = rootView.findViewById(R.id.date_1);
@@ -70,16 +103,21 @@ public class Home extends Fragment {
         Bundle arguments1 = new Bundle();
         arguments1.putString("date", date1);
         TextView addTask1 = rootView.findViewById(R.id.add_task_1);
-        addTask1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TodoList todoList= new TodoList();
-                todoList.setArguments(arguments1);
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, todoList)
-                        .commit();
-            }
-        });
+        TextView addTaskRendered1 = rootView.findViewById(R.id.add_task_rendered_1);
+        TextView[] addTaskArr = {addTask1, addTaskRendered1};
+
+        for (int i = 0; i < 2; i++) {
+            addTaskArr[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TodoList todoList = new TodoList();
+                    todoList.setArguments(arguments1);
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, todoList)
+                            .commit();
+                }
+            });
+        }
 
         Bundle arguments2 = new Bundle();
         arguments2.putString("date", date2);
@@ -136,7 +174,57 @@ public class Home extends Fragment {
                         .commit();
             }
         });
+    }
 
-        return rootView;
+    public void renderAllAvailableTodolistData(FirebaseUser currentUser, View rootView) {
+        // Make it visible
+        if (rootView.findViewById(R.id.show_todolist_text).getVisibility() == View.VISIBLE) {
+            rootView.findViewById(R.id.show_todolist_text).setVisibility(View.GONE);
+            rootView.findViewById(R.id.add_task_1).setVisibility(View.GONE);
+
+            rootView.findViewById(R.id.render_text_1).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.add_task_rendered_1).setVisibility(View.VISIBLE);
+        }
+
+        // Initialize Firebase Realtime Database
+        DatabaseReference ref = FirebaseDatabase
+                .getInstance("https://thescheduler-dfb0a-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference();
+
+        userEmail = currentUser.getEmail().replace(".", ",");
+
+        Query todolistQuery = ref.child("todolist").child(userEmail);
+        todolistQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<String> titles = new ArrayList<String>();
+                List<String> times = new ArrayList<>();
+
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    UserList userList = postSnapshot.getValue(UserList.class);
+                    titles.add(userList.getTitle());
+                    times.add(userList.getTime());
+                }
+
+                TextView renderText = rootView.findViewById(R.id.render_text_1);
+
+                // Loop through the entire thing
+                for (int i = 0; i < titles.size(); i++) {
+                    SpannableStringBuilder str = new SpannableStringBuilder(titles.get(i));
+                    str.append("");
+                    str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, titles.get(i).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    str.append("\nDue: ");
+                    str.append(times.get(i));
+                    str.append("\n\n");
+
+                    renderText.append(str);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
