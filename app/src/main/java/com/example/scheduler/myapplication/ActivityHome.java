@@ -49,6 +49,9 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         if (currentUser != null) {
             findViewById(R.id.login_button).setVisibility(View.GONE);
             findViewById(R.id.account_button).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.login_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.account_button).setVisibility(View.GONE);
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -60,6 +63,7 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
     TodoList todoList = new TodoList();
     Schedule schedule = new Schedule();
     Login login = new Login();
+    Account account = new Account();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -75,6 +79,9 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.login_button:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, login).commit();
+                return true;
+            case R.id.account_button:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, account).commit();
                 return true;
         }
         return false;
