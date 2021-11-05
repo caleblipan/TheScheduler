@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.renderscript.Sampler;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -199,21 +200,34 @@ public class Home extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<String> titles = new ArrayList<String>();
                 List<String> times = new ArrayList<>();
+                List<String> taskTypes = new ArrayList<>();
 
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     UserList userList = postSnapshot.getValue(UserList.class);
                     titles.add(userList.getTitle());
                     times.add(userList.getTime());
+                    taskTypes.add(userList.getTaskType());
                 }
 
                 TextView renderText = rootView.findViewById(R.id.render_text_1);
 
                 // Loop through the entire thing
                 for (int i = 0; i < titles.size(); i++) {
-                    SpannableStringBuilder str = new SpannableStringBuilder(titles.get(i));
-                    str.append("");
+                    SpannableStringBuilder str = new SpannableStringBuilder(" \t" + titles.get(i));
+                    str.append(" ");
+                    if (taskTypes.get(i).equals("Homework"))
+                        str.setSpan(new ImageSpan(getActivity(), R.drawable.assignment_icon), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    else if (taskTypes.get(i).equals("Exam"))
+                        str.setSpan(new ImageSpan(getActivity(), R.drawable.exam_icon), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    else if (taskTypes.get(i).equals("Meeting"))
+                        str.setSpan(new ImageSpan(getActivity(), R.drawable.meeting_icon), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    str.append("\t\t\t\t");
                     str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, titles.get(i).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    str.append("\nDue: ");
+                    if (taskTypes.get(i).equals("Homework") || taskTypes.get(i).equals("Exam"))
+                        str.append("\n\t\t\t\tDue: ");
+                    else
+                        str.append("\n\t\t\t\tStart time: ");
                     str.append(times.get(i));
                     str.append("\n\n");
 
