@@ -224,7 +224,7 @@ public class Home extends Fragment {
 
                     str.append("\t\t\t\t");
                     str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, titles.get(i).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    if (taskTypes.get(i).equals("Homework") || taskTypes.get(i).equals("Exam"))
+                    if (taskTypes.get(i).equals("Homework"))
                         str.append("\n\t\t\t\tDue: ");
                     else
                         str.append("\n\t\t\t\tStart time: ");
