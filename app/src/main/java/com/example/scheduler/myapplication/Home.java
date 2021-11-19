@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;import android.text.format.DateFormat;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -43,6 +44,7 @@ public class Home extends Fragment {
     private View rootView;
     private FirebaseAuth firebaseAuth;
     private String userEmail;
+    BottomNavigationView bottomNavigationView;
     List<String> titles = new ArrayList<String>();
 
     public Home() {
