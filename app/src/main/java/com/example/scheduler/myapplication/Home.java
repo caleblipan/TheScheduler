@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;import android.text.format.DateFormat;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -43,6 +44,7 @@ public class Home extends Fragment {
     private View rootView;
     private FirebaseAuth firebaseAuth;
     private String userEmail;
+    BottomNavigationView bottomNavigationView;
     List<String> titles = new ArrayList<String>();
 
     public Home() {
@@ -224,7 +226,7 @@ public class Home extends Fragment {
 
                     str.append("\t\t\t\t");
                     str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, titles.get(i).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    if (taskTypes.get(i).equals("Homework") || taskTypes.get(i).equals("Exam"))
+                    if (taskTypes.get(i).equals("Homework"))
                         str.append("\n\t\t\t\tDue: ");
                     else
                         str.append("\n\t\t\t\tStart time: ");

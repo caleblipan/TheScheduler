@@ -78,6 +78,9 @@ public class Login extends Fragment {
                                         getActivity().getWindow().findViewById(R.id.account_button).setVisibility(View.VISIBLE);
                                     }
 
+                                    // Default selected bottom navigation menu
+                                    // bottomNavigationView.setSelectedItemId(R.id.home_button);
+
                                     Home home= new Home();
                                     getFragmentManager().beginTransaction()
                                             .replace(R.id.fragment_container, home)
