@@ -3,25 +3,27 @@
     package="com.example.scheduler.myapplication">
 
     <application
+        android:icon="@drawable/logo_green_launcher"
         android:label="The Scheduler"
-        android:theme="@style/AppTheme"
-        android:icon="@drawable/logo_green_launcher">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".NotificationsSettings"
+            android:exported="true" />
+        <activity
+            android:name=".Settings"
+            android:exported="true" />
         <activity
             android:name=".ActivityHome"
-            android:exported="true" />
-        <!-- Home Page -->
+            android:exported="true" /> <!-- Home Page -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- Login Form -->
-        <activity android:name=".LoginForm"></activity>
-
-        <!-- Register Form -->
-        <activity android:name=".RegisterForm"></activity>
+        </activity> <!-- Login Form -->
+        <activity android:name=".LoginForm" /> <!-- Register Form -->
+        <activity android:name=".RegisterForm" />
     </application>
 
 </manifest>

@@ -33,6 +33,7 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
 
@@ -59,6 +60,7 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setSelectedItemId(R.id.home_button);
     }
 
+    // Instantiate fragments for bottom navigation menu
     Home home = new Home();
     TodoList todoList = new TodoList();
     Schedule schedule = new Schedule();
@@ -92,5 +94,18 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_activity_menu, menu);
         return true;
+    }
+
+    // Buttons for ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings_button:
+                Intent intent = new Intent(ActivityHome.this, Settings.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

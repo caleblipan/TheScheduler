@@ -183,15 +183,6 @@ public class Home extends Fragment {
     }
 
     public void renderAllAvailableTodolistData(FirebaseUser currentUser, View rootView) {
-        // Make it visible
-        if (rootView.findViewById(R.id.show_todolist_text).getVisibility() == View.VISIBLE) {
-            rootView.findViewById(R.id.show_todolist_text).setVisibility(View.GONE);
-            rootView.findViewById(R.id.add_task_1).setVisibility(View.GONE);
-
-            rootView.findViewById(R.id.render_text_1).setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.add_task_rendered_1).setVisibility(View.VISIBLE);
-        }
-
         // Initialize Firebase Realtime Database
         DatabaseReference ref = FirebaseDatabase
                 .getInstance("https://thescheduler-dfb0a-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -245,6 +236,11 @@ public class Home extends Fragment {
                     TextView renderText;
                     // Check if it is equal to today or tomorrow or the day after tomorrow etc
                     if (stringDate.equals(todaysDate)) {
+                        rootView.findViewById(R.id.show_todolist_text).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.add_task_1).setVisibility(View.GONE);
+
+                        rootView.findViewById(R.id.render_text_1).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.add_task_rendered_1).setVisibility(View.VISIBLE);
                         renderText = rootView.findViewById(R.id.render_text_1);
                         renderText.append(str);
                     } else if (stringDate.equals(Integer.toString(Integer.parseInt(todaysDate) + 1))) {

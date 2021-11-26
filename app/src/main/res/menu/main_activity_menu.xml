@@ -8,7 +8,7 @@
         android:icon="@drawable/notification_button"
         app:showAsAction="always"></item>
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settings_button"
         android:title="settings"
         android:icon="@drawable/settings_button"
         app:showAsAction="always"></item>
