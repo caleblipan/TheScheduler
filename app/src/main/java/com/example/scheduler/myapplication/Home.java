@@ -34,6 +34,9 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -203,15 +206,15 @@ public class Home extends Fragment {
                 List<String> titles = new ArrayList<String>();
                 List<String> times = new ArrayList<>();
                 List<String> taskTypes = new ArrayList<>();
+                List<String> date = new ArrayList<>();
 
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     UserList userList = postSnapshot.getValue(UserList.class);
                     titles.add(userList.getTitle());
                     times.add(userList.getTime());
                     taskTypes.add(userList.getTaskType());
+                    date.add(userList.getDate());
                 }
-
-                TextView renderText = rootView.findViewById(R.id.render_text_1);
 
                 // Loop through the entire thing
                 for (int i = 0; i < titles.size(); i++) {
@@ -225,7 +228,7 @@ public class Home extends Fragment {
                         str.setSpan(new ImageSpan(getActivity(), R.drawable.meeting_icon), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     str.append("\t\t\t\t");
-                    str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, titles.get(i).length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     if (taskTypes.get(i).equals("Homework"))
                         str.append("\n\t\t\t\tDue: ");
                     else
@@ -233,7 +236,50 @@ public class Home extends Fragment {
                     str.append(times.get(i));
                     str.append("\n\n");
 
-                    renderText.append(str);
+                    String stringDate = date.get(i);
+                    stringDate = stringDate.replaceAll("[^0-9]", "").trim();
+
+                    LocalDateTime today = LocalDateTime.now( ZoneId.of( "Asia/Jakarta" ) ) ;
+                    String todaysDate = Integer.toString(today.getDayOfMonth()).trim();
+
+                    TextView renderText;
+                    // Check if it is equal to today or tomorrow or the day after tomorrow etc
+                    if (stringDate.equals(todaysDate)) {
+                        renderText = rootView.findViewById(R.id.render_text_1);
+                        renderText.append(str);
+                    } else if (stringDate.equals(Integer.toString(Integer.parseInt(todaysDate) + 1))) {
+                        rootView.findViewById(R.id.show_todolist_text_2).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.add_task_2).setVisibility(View.GONE);
+
+                        rootView.findViewById(R.id.render_text_2).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.add_task_rendered_2).setVisibility(View.VISIBLE);
+                        renderText = rootView.findViewById(R.id.render_text_2);
+                        renderText.append(str);
+                    } else if (stringDate.equals(Integer.toString(Integer.parseInt(todaysDate) + 2))) {
+                        rootView.findViewById(R.id.show_todolist_text_3).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.add_task_3).setVisibility(View.GONE);
+
+                        rootView.findViewById(R.id.render_text_3).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.add_task_rendered_3).setVisibility(View.VISIBLE);
+                        renderText = rootView.findViewById(R.id.render_text_3);
+                        renderText.append(str);
+                    } else if (stringDate.equals(Integer.toString(Integer.parseInt(todaysDate) + 3))) {
+                        rootView.findViewById(R.id.show_todolist_text_4).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.add_task_4).setVisibility(View.GONE);
+
+                        rootView.findViewById(R.id.render_text_4).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.add_task_rendered_4).setVisibility(View.VISIBLE);
+                        renderText = rootView.findViewById(R.id.render_text_4);
+                        renderText.append(str);
+                    } else if (stringDate.equals(Integer.toString(Integer.parseInt(todaysDate) + 4))) {
+                        rootView.findViewById(R.id.show_todolist_text_5).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.add_task_5).setVisibility(View.GONE);
+
+                        rootView.findViewById(R.id.render_text_5).setVisibility(View.VISIBLE);
+                        rootView.findViewById(R.id.add_task_rendered_5).setVisibility(View.VISIBLE);
+                        renderText = rootView.findViewById(R.id.render_text_5);
+                        renderText.append(str);
+                    }
                 }
             }
 
