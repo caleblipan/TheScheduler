@@ -17,4 +17,8 @@
 		<item name="colorPrimaryDark">#7ed957</item>
 		<item name="colorAccent">#7ed957</item>
 	</style>
+
+    <style name="SwitchTheme">
+		<item name="colorControlActivated">#00C975</item>
+	</style>
 </resources>
