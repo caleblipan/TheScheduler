@@ -3,6 +3,7 @@ package com.example.scheduler.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -21,15 +22,16 @@ public class NotificationsSettings extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications_settings);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         // Display the title (based from the user's Android versions)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Notifications"+"</font>", Html.FROM_HTML_MODE_LEGACY));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Notifications"+"</font>", Html.FROM_HTML_MODE_LEGACY));
         else
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Notifications"+"</font>"));
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Notifications"+"</font>"));
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
 
         String[] time = {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"};

@@ -3,6 +3,7 @@ package com.example.scheduler.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,17 +35,17 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         // Display the title (based from the user's Android versions)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Settings"+"</font>", Html.FROM_HTML_MODE_LEGACY));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Settings"+"</font>", Html.FROM_HTML_MODE_LEGACY));
         else
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Settings"+"</font>"));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Settings"+"</font>"));
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         /* GET DATA REGARDING THE STATE OF THE AUTHENTICATION */
         // Initialize Firebase
@@ -117,6 +118,16 @@ public class Settings extends AppCompatActivity {
                                 }
                             });
                     builder.show();
+            }
+        });
+
+        // Subscription button onclick
+        TextView subscriptionOption = findViewById(R.id.subscription_option);
+        subscriptionOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, Subscription.class);
+                startActivity(intent);
             }
         });
 

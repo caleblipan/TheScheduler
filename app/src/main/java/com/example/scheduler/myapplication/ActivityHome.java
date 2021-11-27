@@ -6,6 +6,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.cardview.widget.CardView;
 
@@ -34,8 +35,11 @@ public class ActivityHome extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         // ActionBar
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+        // ActionBar actionBar = getSupportActionBar();
+        // actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.action_bar_bg));
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_green_action_bar);

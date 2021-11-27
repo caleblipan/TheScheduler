@@ -3,12 +3,21 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
 	compileSdkVersion 28
+	flavorDimensions "mode"
 	defaultConfig {
 		applicationId "com.example.scheduler.myapplication"
 		minSdkVersion 26
 		versionCode 1
 		versionName "1.0"
 	}
+
+	productFlavors{
+		sandbox{
+			buildConfigField "String", "BASE_URL", "\"https://merchant-server-mobile.herokuapp.com/\""
+			buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-3IdsLTilYp5cKMKz\""
+		}
+	}
+
 	buildTypes {
 		release {
 			minifyEnabled true
@@ -18,6 +27,9 @@ android {
 }
 
 dependencies {
+	def activity_version = "1.0.0"
+	implementation "androidx.activity:activity:$activity_version"
+
 	implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-database:20.0.2'
     implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
@@ -26,4 +38,5 @@ dependencies {
 	implementation 'com.google.android.material:material:1.2.1'
 	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 	implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+	implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
 }

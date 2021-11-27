@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".Settings">
+    tools:context=".Subscription">
 
     <!-- Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
@@ -34,72 +34,91 @@
         android:background="#ffffff"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:context=".Settings">
-
-        <!-- Notifications -->
+        tools:context=".Subscription">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/notifications_option"
-            android:text="Notifications"
-            android:textStyle="bold"
-            android:clickable="true"
+            android:id="@+id/your_membership_status"
+            android:text="Your membership status:"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/notifications_option_description"
-            android:text="Set your notifications settings"
-            app:layout_constraintTop_toBottomOf="@id/notifications_option"
+            android:id="@+id/status"
+            android:text="Basic"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/your_membership_status"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expires_on"
+            android:layout_marginTop="10dp"
+            android:text="Expires on:"
+            app:layout_constraintTop_toBottomOf="@id/status"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expiry_date"
+            android:text="No expiry date"
+            app:layout_constraintTop_toBottomOf="@id/expires_on"
             app:layout_constraintLeft_toLeftOf="parent" />
 
-        <!-- Password -->
+        <!-- List of features from subscription -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/subscription_plan_title"
             android:layout_marginTop="20dp"
-            android:id="@+id/password_option"
-            android:text="Change your password"
+            android:text="Subscribe to our Premium plan NOW to get all the features you can't live without!"
             android:textStyle="bold"
-            android:clickable="true"
-            app:layout_constraintTop_toBottomOf="@id/notifications_option_description"
+            app:layout_constraintTop_toBottomOf="@id/expiry_date"
             app:layout_constraintLeft_toLeftOf="parent" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password_option_description"
-            android:text="Change your current password into a new one."
-            app:layout_constraintTop_toBottomOf="@id/password_option"
+            android:id="@+id/benefit_1"
+            android:layout_marginTop="10dp"
+            android:text="Automatically save everything to the cloud, including your tasks, appointments, and class schedules"
+            android:drawableLeft="@drawable/ic_baseline_check_24"
+            android:drawablePadding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/subscription_plan_title"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/benefit_2"
+            android:layout_marginTop="10dp"
+            android:text="No pop-up ads"
+            android:drawableLeft="@drawable/ic_baseline_check_24"
+            android:drawablePadding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/benefit_1"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/benefit_3"
+            android:layout_marginTop="10dp"
+            android:text="Cancel anytime"
+            android:drawableLeft="@drawable/ic_baseline_check_24"
+            android:drawablePadding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/benefit_2"
             app:layout_constraintLeft_toLeftOf="parent" />
 
-        <!-- Subscription -->
-        <TextView
+        <!-- Make payment -->
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/subscribe_button"
+            android:text="Subscribe Now For IDR 24.990 per month"
             android:layout_marginTop="20dp"
-            android:id="@+id/subscription_option"
-            android:text="Subscription"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/password_option_description"
-            app:layout_constraintLeft_toLeftOf="parent" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/subscription_option_description"
-            android:text="Subscribe to out monthly membership to automatically save everything to the cloud!"
-            app:layout_constraintTop_toBottomOf="@id/subscription_option"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <!-- Logout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:id="@+id/logout_button"
-            android:text="Log out"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/subscription_option_description"
+            android:background="#7ed957"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/benefit_3"
             app:layout_constraintLeft_toLeftOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
