@@ -7,6 +7,9 @@
         android:label="The Scheduler"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
             android:name=".NotificationsSettings"
             android:exported="true" />
         <activity
