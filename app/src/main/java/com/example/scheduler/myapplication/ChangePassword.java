@@ -3,6 +3,7 @@ package com.example.scheduler.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -27,13 +28,16 @@ public class ChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         // Display the title (based from the user's Android versions)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Change Password"+"</font>", Html.FROM_HTML_MODE_LEGACY));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Change Password"+"</font>", Html.FROM_HTML_MODE_LEGACY));
         else
-            actionBar.setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Change Password"+"</font>"));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#1d1d1d'>"+"Change Password"+"</font>"));
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         /* GET DATA REGARDING THE STATE OF THE AUTHENTICATION */
         // Initialize Firebase

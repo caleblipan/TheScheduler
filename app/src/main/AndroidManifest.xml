@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.scheduler.myapplication">
 
     <application
         android:icon="@drawable/logo_green_launcher"
         android:label="The Scheduler"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <activity
+            android:name=".MakePayment"
+            android:exported="true" />
+        <activity
+            android:name=".Subscription"
+            android:exported="true" />
         <activity
             android:name=".ChangePassword"
             android:exported="true" />
